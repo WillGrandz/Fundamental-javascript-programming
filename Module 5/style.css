@@ -1,0 +1,102 @@
+/* CSS RESET - Återställning av vissa standardstilar för bättre kompatibilitet mellan webbläsare */
+body, h1, h2, h3, p, a, figure, blockquote, dl, dd, ul, ol, li, pre, fieldset, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+/* Återställer textdekorationsstilen och färgen för länkar */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Mina stilregler */
+body {
+    /* Använder en specifik fontfamilj och sätter en bakgrundsbild */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f4;
+    background-image: url(ivan-shimko-tCp2K2sYpFg-unsplash.jpg);
+    /*
+    "S. Esenin" av I. Shimko, 2018, https://unsplash.com/photos/white-airliner-on-runway-tCp2K2sYpFg. 
+    Free to use under the Unsplash License. Reprinted with permission. 
+    */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 80%;
+    /* Ger lite luft runt sidans innehåll */
+    padding: 2em;
+}
+
+/* Header */
+h1 {
+    /* Centrerar texten, sätter färg och ger lite marginal över och under */
+    text-align: center;
+    color: #2C3E50;
+    margin: 1em 0em;
+    /* Justerar textstorlek för en tydlig rubrik */
+    font-size: 2.8rem;
+}
+
+/* Main */
+.diagram-container {
+    /* Positionering, storlek och visuell effekt för huvudinnehållet */
+    position: relative;
+    width: 90%;
+    padding: 0.1em 0.1em;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Tillämpar en förstorningseffekt vid hover för visuell feedback */
+    transition: transform 0.3s ease-in-out;
+}
+
+.diagram-container:hover {
+    transform: scale(1.02);
+}
+
+.tooltip {
+    /* Positionering, färg och transparens för en informativ tooltip */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    opacity: 0;
+    /* Tillämpar en övergångseffekt för tooltipens synlighet */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.diagram-container:hover .tooltip {
+    /* Gör tooltip synlig vid hover */
+    opacity: 1;
+}
+
+canvas {
+    /* Justerar visningsinställningar för diagrammet */
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Footer */
+footer {
+    /* Justeringar för sidans botten, färg, stil och storlek */
+    text-align: right;
+    margin-top: 1em;
+    color: #ECF0F1;
+    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: bold;
+    /* Tillämpar en övergångseffekt för textfärg vid hover */
+    transition: color 0.3s ease-in-out;
+}
+
+footer:hover, footer a:hover {
+    /* Ändrar textfärg vid hover för tydligare interaktion */
+    color: #D6DBDF;
+}

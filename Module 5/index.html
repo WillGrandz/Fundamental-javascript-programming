@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <!-- Anger teckenkodningen för dokumentet -->
+    <meta charset="UTF-8">
+    <!-- Anpassar visningen för olika enheter -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Beskrivning av sidan för sökmotorer och användare -->
+    <meta name="description" content="Projekt och Kodförståelse Modul 4">
+    <!-- Mitt namn-->
+    <meta name="author" content="Helen Grandez">
+    <!-- Titel som visas i webbläsarens flik -->
+    <title>Aktuella Flygbokningar</title>
+    <!-- Länk till extern stylesheet för sidans utseende -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Länk till webbplatsens ikon som visas i webbläsarens flik -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Sidans huvudrubrik -->
+    <header>
+        <h1>Pågående Flygbokningar</h1>
+    </header>
+
+    <!-- Huvudinnehållsområde -->
+    <main>
+        <!-- Sektion för diagram med unikt id och visuell tooltip -->
+        <section class="diagram-container" id="diagramContainer">
+            <!-- Canvas-element för att rita diagrammet -->
+            <canvas id="mittDiagram" aria-label="Dynamiskt diagram"></canvas>
+            <!-- Tooltip som visas vid hover -->
+            <div class="tooltip">
+                <p>Klicka för mer information</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidans sidfot -->
+    <footer>
+        <!-- Länk utan mål till sidans skapare -->
+        <p><a href="#" id="footerLink">Skapad av Helen Grandez</a></p>
+    </footer>
+
+    <!-- Externa JavaScript-bibliotek för diagram och egen skriptfil -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js. (2023). Chart.js: Simple yet flexible JavaScript charting for designers & developers. Hämtat från https://cdn.jsdelivr.net/npm/chart.js  -->
+    <script src="script.js"></script>
+</body>
+</html>
