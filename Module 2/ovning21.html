@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <title>Övning 2.21 - Modul 2</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Övning 2.21 - Modul 2">
+        <meta name="author" content="William Grandez">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- INTERNAL CSS -->
+        <style>
+            body {
+                box-sizing: border-box;
+                padding: 0em 5em;
+                background-color: #011627;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            /* HEADER */
+            h1 {
+                text-align: center;
+                font-size: 4rem;
+                color: #6ebdfa;
+                margin-bottom: 0.8em;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 2rem;
+                color: #6ebdfa;
+            }
+
+            .paragraph {
+                color: #f4e9b3;
+                padding: 0em 9em;
+                line-height: 1.8rem;
+                word-spacing: 0.1rem;
+                margin-bottom: 4em;
+                text-align: center;
+            }
+
+            /* MENU */
+            .menu {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            a {
+                color: #ec9cd2;
+                text-decoration: none;
+                margin-right: 1em;
+                margin-bottom: 2em;
+                font-size: 1.5rem;
+                font-weight: bolder;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+
+            /* DIV */
+            .movingDiv {
+                box-sizing: border-box;
+                width: 50px;
+                height: 50px;
+                background-color: #ec9cd2;
+                position: absolute;
+            }
+
+            /* FOOTER */
+            footer {
+                margin-top: 3em;
+                background-color: #1f91c3;
+                color: #efefef;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 0.3em 0em;
+                border-radius: 0.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- SIDHUVUD -->
+        <header>
+            <h1>Modul 2</h1>
+            <h2>Övning 2.21</h2>
+            <p class="paragraph">Gör ett program som  placerar ut 1 st div-element 50*50 pixlar per sekund på en slumpad position. (Det kan finnas flera sätt att lösa uppgiften på, t.ex. kan ett div-element flyttas till en ny position en gång per sekund, eller så kan ett nytt div-element skapas en gång per sekund.)</p>
+            <!-- Menu -->
+            <div class="menu">
+                <a href="ovning7.html">Övning 2.7</a>
+                <a href="ovning15.html">Övning 2.15</a>
+            </div>
+        </header>
+
+        <div id="movingDiv" class="movingDiv"></div>
+
+        <!-- SIDFOT -->
+        <footer>
+            <p lang="en">
+                Designed and Developed by William Grandez
+            </p>
+        </footer>
+
+        <!-- JAVASCRIPT -->
+       <script>
+            // Skapar en ny funktion för få min div att byta position.
+            function moveMyDiv() {
+                // Kopplar till mitt div-element genom JavaScript DOM.
+                let myDiv = document.getElementById("movingDiv");
+
+                /* Till mina två variabler positionX samt positionY tilldelar jag följande:
+                window.innerWidth samt window.innerHeight som anger bredden och höjden på webbläsarfönstret.
+                Men ett minus tecken så ber jag funktionen att beräkna resterande utrymme.
+                Därmed tar jag också hänsyn till CSS-reglerna för mitt div-element genom property .clientWidth och .clientHeight.*/
+                const positionX = window.innerWidth - myDiv.clientWidth;
+                const positionY = window.innerHeight - myDiv.clientHeight;
+
+                // Tilldelar mina två variabler följande funktion för slumptal mellan 0 till värdet av positionX- samt Y.
+                // Funktionen Math.floor avrundar värdet till närmaste heltal. 
+                const randomPositionX = Math.floor(Math.random() * positionX);
+                const randomPositionY = Math.floor(Math.random() * positionY);
+
+                /* Med property style.left och style.top så anges div-elementets horisontella och vertikala position.
+                Tack vare det kan mitt div-element flyttas till en ny plats på webbsidan.
+                Tilldelar de värdet template literals som bär sig med värdet som indikerar vilken position som
+                mitt div-element ska ha i pixlar.*/
+                myDiv.style.left = `${randomPositionX}px`;
+                myDiv.style.top = `${randomPositionY}px`;
+            }
+
+            /* Använder denna inbyggda JavaScript funktionen 
+            och lägger in min egna funktion för att positonera div-elementet
+            på varje 1000 millisekund vilket med andra ord blir per sekund. */
+            setInterval(moveMyDiv, 1000);
+       </script>
+    </body>
+</html>

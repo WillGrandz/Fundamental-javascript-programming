@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <title>Övning 2.7 - Modul 2</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Övning 2.7 - Modul 2">
+        <meta name="author" content="William Grandez">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- INTERNAL CSS -->
+        <style>
+            body {
+                box-sizing: border-box;
+                padding: 0em 5em;
+                background-color: #011627;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            /* HEADER */
+            h1 {
+                text-align: center;
+                font-size: 4rem;
+                color: #6ebdfa;
+                margin-bottom: 0.8em;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 2rem;
+                color: #6ebdfa;
+            }
+
+            .paragraph {
+                color: #f4e9b3;
+                padding: 0em 9em;
+                line-height: 1.8rem;
+                word-spacing: 0.1rem;
+                margin-bottom: 4em;
+                text-align: center;
+            }
+
+            /* MENU */
+            .menu {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            a {
+                color: #ec9cd2;
+                text-decoration: none;
+                margin-right: 1em;
+                margin-bottom: 2em;
+                font-size: 1.5rem;
+                font-weight: bolder;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+
+            /* FORM */
+
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            /* Paragraph section */
+            .formParagraph {
+                color: #bdf0c0;
+                font-size: 1.5rem;
+            }
+
+            .bi-bi-arrow-down-circle-fill {
+                color: #7dd7c6;
+            }
+
+            /* Button Frame */
+            .buttonFrame {
+                margin: 1.5em 0em;
+            }
+
+            button {
+                background-color: #ec9cd2;
+                border-radius: 1em;
+            }
+
+            .bi-bi-power {
+                background-color: #ec9cd2;
+            }
+
+            /* Output Frame */
+            .jsParagraph {
+                color: #bdf0c0;
+                font-size: 2.5em;
+                font-weight: bold;
+            }
+
+            /* FOOTER */
+            footer {
+                margin-top: 3em;
+                background-color: #1f91c3;
+                color: #efefef;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 0.3em 0em;
+                border-radius: 0.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- SIDHUVUD -->
+        <header>
+            <h1>Modul 2</h1>
+            <h2>Övning 2.7</h2>
+            <p class="paragraph">Skapa en array med orden "Hej", "Nej", "EJ", "Leverpastej", "42". Slumpa fram ett av orden och visa dem med valfri metod när ni trycker på en knapp.</p>
+            <!-- Menu -->
+            <div class="menu">
+                <a href="ovning15.html">Övning 2.15</a>
+                <a href="ovning21.html">Övning 2.21</a>
+            </div>
+        </header>
+
+        <!-- FORMULÄR -->
+        <main>
+            <form>
+                <p class="formParagraph">
+                    Tryck på knappen
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi-bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                    </svg>
+                </p>
+    
+                <!-- KNAPP -->
+                <div class="buttonFrame">
+                    <button type="button" id="knapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi-bi-power" viewBox="0 0 16 16">
+                            <path d="M7.5 1v7h1V1h-1z"/>
+                            <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                        </svg>
+                    </button>
+                </div>
+    
+                <!-- TEXTBOX -->
+                <div class="inputFrame">
+                    <p id="ord" class="jsParagraph"></p>
+                </div>
+            </form>
+        </main>
+
+        <!-- SIDFOT -->
+        <footer>
+            <p lang="en">
+                Designed and Developed by William Grandez
+            </p>
+        </footer>
+
+        <!-- JAVASCRIPT -->
+       <script>
+            // Variabel för min ordbank. 
+            const ordBank = ["Hej", "Nej", "EJ", "Leverpastej", "42"];
+
+            // Min första JavaScript DOM.
+            // (1) Kopplar först till elementet för min knapp.
+            // (2) Lägger till funktionen .addEventListener för en ny händelse.
+            // (3) Inom den läggs parametern "click" för att indikera att koden exekveras när elementet klickas.
+            // (4) Presenterar variabel slumpaOrden som bär koden/funktionen som ska köras när elementet klickas.
+            document.getElementById("knapp").addEventListener("click", slumpaOrden);
+
+            // Deklarerar jag min nya funktion för slumpmässiga ord.
+            function slumpaOrden() {
+
+                /* 
+                Först behövs en funktion som kan slumpa fram ett värde.
+                Därför skapas en variabel som tilldelas med funktionen Math.floor() för att avrunda till närmaste heltal. 
+                Inom den finner man den tillsatta funktionen Math.random() som tilldelar decimaltal mellan 0 till 1.
+                Jag multiplicerar med ordBank.length där .length är en property som hittar antalet skrivtecken i min array.
+                Resultatet när jag multiplicerar de båda blir att slumptalet från Math.random() kommer att anpassas så att 
+                det passar längden på min array.
+                Värdet sparas i variabeln slump.
+                */
+                const slump = Math.floor(Math.random() * ordBank.length);
+
+                // Skapar en ny variabel som har uppgiften att spara det slumpade ordet från min array ordBank.
+                const slumpOrd = ordBank[slump];
+
+                // Min andra JavaScript DOM.
+                // (1) Kopplar först till mitt paragraf element för output.
+                // (2) Lägger till property .innerText för uppdatera texten i mitt paragraf element.
+                /* (3) Använder därefter en så kallad "template literal" som jag läste om i webbsidan mdn web docs.
+                Med denna mall `${}` kan jag lägga till värdet från min variabel slumpOrd i textsträngen. */
+                document.getElementById("ord").innerText = `${slumpOrd}`;
+            }
+       </script>
+    </body>
+</html>
