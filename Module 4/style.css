@@ -1,0 +1,263 @@
+/* SKAPAD AV WILLIAM GRANDEZ */
+
+/* CSS RESET */
+body, h1, h2, h3, p, a, figure, blockquote, dl, dd, ul, ol, li, pre, fieldset, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* SHOPPINGLISTA 🛒 - STARTSIDA */
+
+/* Definiera en anpassad font från Font Squirrel */
+@font-face {
+    font-family: myFont;
+    src: url(NotoSans-VariableFont_wdth,wght.ttf);
+}
+
+/* Grundstil för sidan */
+body {
+    font-family: myFont;
+    background-color: #fdd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+/* Huvudcontainer för innehållet */
+#container {
+    max-width: 25em;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    margin-top: 1em;
+}
+
+/* Rubrikstil */
+h1 {
+    color: #ff6347;
+    font-size: 2.2rem;
+}
+
+/* Meny */
+.menu {
+    margin-top: 1.5em;
+    padding: 1em 1em;
+    background-color: #e85a41;
+    border-radius: 0.5em;
+}
+
+/* Länkstil för menyn */
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Hover-effekt för länkar */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Justera högermarginal för första länken i menyn */
+.firstLink {
+    margin-right: 1em;
+}
+
+/* MAIN */
+main {
+    margin-top: 2em;
+}
+
+/* Etikettstil */
+label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Inmatningsfält och select-stil */
+input[type="text"],
+input[type="number"],
+select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em;
+    margin: 2em 0;
+    border: 2px inset none;
+    border-radius: 0.3em;
+    padding: 1em;
+    font-size: 0.8rem;
+}
+
+/* Stil för select-elementet */
+select {
+    background-color: #ff6347;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Knappstil */
+button {
+    background-color: #ff6347;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 450;
+    padding: 0.6em;
+    border: 1px outset none;
+    border-radius: 0.4em;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+}
+
+/* Hover-effekt för knappar */
+button:hover {
+    background-color: #e53935;
+}
+
+/* Stil för tillagda produkter */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+/* Stil för knappar i listan */
+.list-button {
+    background-color: #ff6347;
+    color: #fff;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.2em;
+    cursor: pointer;
+    margin: 0.5em;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Hover-effekt för knappar i listan */
+.list-button:hover {
+    background-color: #e53935;
+}
+
+/* Stil för total displayen */
+#total {
+    margin-top: 0.6em;
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Tillagda stilar för ordavstånd (JS) */
+.item-name {
+    margin-right: 0.3rem;
+}
+
+.item-price {
+    word-spacing: 0.2rem;
+    margin-right: 1em;
+}
+
+/* Sparade listor (JS) */
+#saved-lists {
+    margin-top: 20px;
+}
+
+.saved-list-item {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Hover-effekt för sparade listor */
+.saved-list-item:hover {
+    background-color: #f0f0f0;
+}
+
+.saved-list-name {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+/* Stil för delete-knappar i sparade listor */
+.delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+}
+
+/* Hover-effekt för delete-knappar i sparade listor */
+.delete-button:hover {
+    color: #e53935;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 2em;
+}
+
+/* Stil för text i footern */
+footer > p {
+    font-family: fantasy;
+    font-style: italic;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+/* SHOPPINGLISTA 🛒 - TEORI */
+
+/* Huvudcontainer för innehållet */
+#container2 {
+    max-width: 60em;
+    width: 100%;
+    height: auto;
+    padding: 1em 1em;
+    background-color: #fff;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em #0000001a;
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+/* MAIN */
+main {
+    margin-top: 2em;
+}
+
+pre {
+    overflow: auto;
+}
+

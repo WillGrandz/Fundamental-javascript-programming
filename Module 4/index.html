@@ -1,0 +1,80 @@
+<!-- SKAPAD AV WILLIAM GRANDEZ -->
+<!DOCTYPE html> <!-- Denna deklaration specificerar HTML-versionen som används, i detta fall HTML5. -->
+<html lang="en"> <!-- Språket är på engelska -->
+    <head>
+        <meta charset="UTF-8"> <!-- Teckenuppsättningen för dokumentet som UTF-8. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Anpassar visningen för olika enheter genom att ställa in bredden till enhetens bredd och startskalan till 1. -->
+        <meta name="description" content="Projekt och Kodförståelse Modul 4"> 
+        <meta name="author" content="William Grandez">
+        <title>Shoppinglista</title>
+        <link rel="stylesheet" href="style.css"> <!-- Länk till en extern CSS-fil -->
+    </head>
+    <body>
+        <div id="container"> <!-- En huvudbehållare för allt innehåll på sidan. -->
+
+            <header>
+                <h1>Shoppinglista 🛒</h1>
+                
+                <div class="menu">
+                    <!-- En meny som innehåller länkar till "Home" och "Theory" sektionerna. -->
+                    <a class="firstLink" href="index.html"> <!-- En länk till startsidan med ett hem-ikon. -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                        </svg>
+                        Startsida
+                    </a>
+                    <a href="teori.html"> <!-- En länk till en teorisida med en filikon. -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                        </svg>
+                        Teori
+                    </a>
+                </div>
+            </header>
+            
+
+            <main>
+                <div> <!-- Formulär för att lägga till objekt i inköpslistan. ↓ -->
+                    <label for="item">Produkt:</label>
+                    <input type="text" id="item" placeholder="Enter item..."> <!-- Inmatningsfält för objektnamn. -->
+                    <label for="price">Pris:</label>
+                    <input type="number" id="price" placeholder="Enter price..."> <!-- Inmatningsfält för objektpris. -->
+                    <label for="currency">Valuta:</label> 
+                    <select id="currency"> <!-- Listmeny för val av valuta. -->
+                        <option value="USD">USD</option> <!-- United States Dollar -->
+                        <option value="SEK">SEK</option> <!-- Swedish Krona -->
+                        <option value="GBP">GBP</option> <!-- British pound sterling -->
+                        <option value="EUR">EUR</option> <!-- EURO -->
+                    </select>
+                    <!-- Knappar för att lägga till objekt, rensa listan och spara listan. ↓ -->
+                    <button onclick="shoppingApp.addItem()">Lägg till produkt</button>
+                    <button onclick="shoppingApp.clearList()">Rensa</button>
+                    <button onclick="shoppingApp.saveList()">Spara listan</button>
+                </div>
+                
+                <ul id="shopping-list">
+                    <!-- Objekt kommer att läggas till dynamiskt här -->
+                </ul>
+                
+                <div id="total">Totalt: $0.00</div>
+    
+                <h2>Saved Lists</h2>
+                <div id="saved-lists">
+                    <!-- Sparade listor kommer dynamiskt att läggas till här -->
+                </div>
+    
+                <button class="list-button" onclick="shoppingApp.clearSavedLists()">Radera alla sparade listor</button> <!-- En knapp för att rensa alla sparade listor. -->
+            </main>
+            
+            <footer> <!-- Sidfoten innehåller information om skaparen av sidan. -->
+                <p>
+                    Skapad av William Grandez
+                </p>
+            </footer>
+        </div>
+
+        <script src="script.js"></script> <!--  Länk till en extern JavaScript-fil ("script.js") som innehåller funktionalitet för inköpslistan. -->
+
+    </body>
+</html>
