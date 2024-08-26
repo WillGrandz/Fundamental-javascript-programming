@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <title>Övning 3.10 - Modul 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Övning 3.10 - Modul 3">
+    <meta name="author" content="William Grandez">
+    <style>
+        body {
+            box-sizing: border-box;
+            padding: 0em 5em;
+            background-color: #011627;
+            color: #efefef;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        /* HEADER */
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            color: #6ebdfa;
+            margin-bottom: 0.8em;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #6ebdfa;
+        }
+
+        .paragraph {
+            color: #f4e9b3;
+            padding: 0em 9em;
+            line-height: 1.8rem;
+            word-spacing: 0.1rem;
+            margin-bottom: 5em;
+            text-align: center;
+        }
+
+        /* MENU */
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        a {
+            color: #ec9cd2;
+            text-decoration: none;
+            margin-right: 1em;
+            margin-bottom: 2em;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+        main {
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        .buttonFrame {
+            margin: 1.5em 0em;
+        }
+
+        button {
+            background-color: #ec9cd2;
+            border-radius: 5em;
+            padding: 2em 2em;
+            font-size: 1.5em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .mittResultat {
+            color: #7dd7c6;
+            text-align: center;
+            font-size: 1.8rem;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 1em;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 4em;
+            background-color: #1f91c3;
+            color: #efefef;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 0.3em 0em;
+            border-radius: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Heading -->
+    <header>
+        <h1>Modul 3</h1>
+        <h2>Övning 3.10</h2>
+        <p class="paragraph">
+            Skapa en klass som heter Vara den skall innehålla följande attribut: namn, pris, beskrivning, antal samt en metod som heter calcSubTotal. 
+            calcSubTotal skall returnera pris*antal (alternativt skriv ut totalpriset någonstans på sidan) skapa ett objekt av denna klass direkt när sidan laddas. 
+            Anropa metoden calcSubTotal genom att trycka på en knapp.
+        </p>
+        <!-- Menu -->
+        <div class="menu">
+            <a href="ovning1.html">Övning 3.1</a>
+            <a href="ovning7.html">Övning 3.7</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="buttonFrame">
+            <button type="button" id="minButton">Skriv ut totalpriset</button>
+        </div>
+
+        <p id="result" class="mittResultat"></p>
+    </main>
+
+    <script>
+        // Definierar min klass Vara
+        class Vara {
+            // Konstruktorn används för att ge klassen med dess angivna attribut
+            constructor(namn, pris, beskrivning, antal) {
+                // Tilldelar de inkommande värdena till motsvarande attribut i klassen
+                this.namn = namn; // Produktnamn
+                this.pris = pris; // Pris per enhet
+                this.beskrivning = beskrivning; // Beskrivning av produkten
+                this.antal = antal; // Antal av...
+            }
+
+            // Metod för att beräkna det totala värdet baserat på pris och antal
+            calcSubTotal() {
+                return this.pris * this.antal; // Returnerar värdet på produkten av pris gånger antal
+            }
+        }
+
+        // Skapar en instans av Vara-klassen när sidan är laddad
+        const minVara = new Vara("Produkt1", 10.99, "Exempelbeskrivning", 2);
+
+        // Använder window.onload för att säkerställa att hela DOM är helt laddad
+        window.onload = function() {
+            // Lägger till en händelselyssnare för knappklick med hjälp av knappens id
+            document.getElementById("minButton").addEventListener("click", function() {
+                // Beräknar det totala värdet genom att anropa Vara-klassens calcSubTotal-metod
+                const subtotal = minVara.calcSubTotal();
+
+                // Formaterar det totala värdet som en sträng (template literals) med två decimaler och uppdaterar resultatet på sidan
+                document.getElementById("result").innerHTML = `Totalt: ${subtotal.toFixed(2)}kr`;
+            });
+        };
+    </script>
+
+    <footer>
+        <p lang="en">
+            Designed and Developed by William Grandez
+        </p>
+    </footer>
+</body>
+</html>

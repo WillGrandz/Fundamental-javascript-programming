@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <title>Övning 3.1 - Modul 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Övning 3.1 - Modul 3">
+    <meta name="author" content="William Grandez">
+    <style>
+        body {
+            box-sizing: border-box;
+            padding: 0em 5em;
+            background-color: #011627;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        /* HEADER */
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            color: #6ebdfa;
+            margin-bottom: 0.8em;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #6ebdfa;
+        }
+
+        img {
+            width: 100%;
+            margin: 5em 0em;
+            border-radius: 1.5em;
+            border: 10px solid #f4e9b3;
+        }
+
+        /* MENU */
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            color: #ec9cd2;
+            text-decoration: none;
+            margin-right: 1em;
+            margin-bottom: 2em;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+
+        /* MAIN */
+        main {
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #7dd7c6;
+            margin-bottom: 1.3em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* TABLE */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 1em 1em;
+            text-align: left;
+            font-family: monospace;
+        }
+
+        td {
+            color: white;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 4em;
+            background-color: #1f91c3;
+            color: #efefef;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 0.3em 0em;
+            border-radius: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Heading -->
+    <header>
+        <h1>Modul 3</h1>
+        <h2>Övning 3.1</h2>
+        <img src="Screenshot-1.png" alt="Instruktioner">
+        <!-- Menu -->
+        <div class="menu">
+            <a href="ovning7.html">Övning 3.7</a>
+            <a href="ovning10.html">Övning 3.10</a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <h3>Mätstationer</h3>
+    </main>
+
+    <script>
+        // Utgår från följande instruerade data där det constanta variabeln inte får editeras.
+        const tempen = [
+            ["", "00-08", "08-16", "16-24"],
+            ["Malmö", 12, 16, 9],
+            ["Mariestad", 13, 15, 10],
+            ["Stockholm", 13, 15, 13],
+            ["Upphärad", 14, 16, 15],
+            ["Göteborg", 13, 14, 12]
+        ];
+
+        // En skapad liknande Namespace för att samla in temperaturdata och tillhörande funktioner
+        const TemperaturData = {
+            /* 
+              Definierar funktionen kalkyleraGenomsnitt som hämtar tempen-arrayen, 
+              delar upp den i bitar och reviderar den med map-funktionen på varje rad i arrayen.
+              För varje rad läggs ett nytt element till som innehåller det beräknade medelvärdet av temperaturerna.
+            */
+            kalkyleraGenomsnitt: () => tempen.slice(1).map(station =>
+                [...station, (station.slice(1).reduce((sum, temp) => sum + temp, 0) / (station.length - 1)).toFixed(1)]
+            ),
+
+            // Funktion för att skapa tabellen och dess struktur samt visa den i dokumentkroppen
+            skapaTabell: () => {
+                // Skapar här en ny tabell
+                const tabell = document.createElement('table');
+
+
+                /* 
+                Här använder jag reduce som är en kraftfull metod med funktionen 
+                att samla ihop det totala värdet i arrayen. 
+                Med mallarna template literals så kan jag därmed också publicera ut dessa värden i strängar. 
+                */
+                // Denna funktion är alltså gjord för att skapa rubrikrader med reduce och template literals.
+                const skapaRubrikRader = () => tempen[0].reduce((rader, cell) => rader + `<th>${cell}</th>`, '');
+
+                // Här har jag nu funktionen för att skapa cellrader, också med reduce och template literals.
+                const skapaRader = (station) => station.reduce((rader, cellData) => rader + `<td>${cellData}</td>`, '');
+
+                /*
+                Skapar här självaste tabellen och bestämde att göra detta via JavaScript då det kändes enklare 
+                än att vara tvungen att koppla varje cellrad från elementet table til JavasCript koden.
+                Så först börjar jag med att skapa rubrikerna och anväder mig av template literals för att visa
+                värderna i varje kolumn. Lägger därmed också till rubriken "medel".
+                Därefter skapar jag på liknande sätt övriga kolumner med dess värden med template literals samt reduce. 
+                */
+                tabell.innerHTML = `
+                    <thead><tr>${skapaRubrikRader()}<th>Medel</th></tr></thead>
+                    <tbody>${TemperaturData.kalkyleraGenomsnitt().reduce((rader, station) => rader + `<tr>${skapaRader(station)}</tr>`, '')}</tbody>
+                `;
+
+                // Lägger till tabellen i HTML-dokumentet.
+                document.body.appendChild(tabell);
+            }
+        };
+
+        // Anropar nu skapaTabell-funktionen för att officiellt visa tabellen i HTML-dokumentet. 
+        TemperaturData.skapaTabell();
+    </script>
+
+    <footer>
+        <p lang="en">
+            Designed and Developed by William Grandez
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <title>Övning 3.7 - Modul 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Övning 3.7 - Modul 3">
+    <meta name="author" content="William Grandez">
+  <style>
+        body {
+            box-sizing: border-box;
+            padding: 0em 5em;
+            background-color: #011627;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        /* HEADER */
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            color: #6ebdfa;
+            margin-bottom: 0.8em;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #6ebdfa;
+        }
+
+        .paragraph {
+            color: #f4e9b3;
+            padding: 0em 9em;
+            line-height: 1.8rem;
+            word-spacing: 0.1rem;
+            margin-bottom: 5em;
+            text-align: center;
+        }
+
+        /* MENU */
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            color: #ec9cd2;
+            text-decoration: none;
+            margin-right: 1em;
+            margin-bottom: 2em;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+        main {
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #bdf0c0;
+            margin-bottom: 1.3em;
+        }
+
+        .hoverDiv {
+            width: 12.5em;
+            height: 12.5em;
+            margin: 0 auto;
+            margin-top: 2em;
+            background-color: #7dd7c6;
+            cursor: pointer;
+            border-radius: 1em;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 4em;
+            background-color: #1f91c3;
+            color: #efefef;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 0.3em 0em;
+            border-radius: 0.5em;
+        }
+  </style>
+</head>
+<body>
+    <!-- Heading -->
+    <header>
+        <h1>Modul 3</h1>
+        <h2>Övning 3.7</h2>
+        <p class="paragraph">
+            Skriv ett program som men hjälp av javascript ändrar bakgrundsfärgen på ett div-element när man håller musen över den, 
+            och sedan ändrar tillbaka till ursprungsfärgen när man flyttar bort muspekaren (använd namespace).
+        </p>
+        <!-- Menu -->
+        <div class="menu">
+            <a href="ovning1.html">Övning 3.1</a>
+            <a href="ovning10.html">Övning 3.10</a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <div id="minDiv" class="hoverDiv"></div>
+    </main>
+
+    <script>
+        // Skapar här namespace för att samla koden samt alla funktioner tillsammans.
+        let hoverEffect = {
+
+            // Funktion för hovereffekten när musen är ovanpå Div elementet.
+            vidMouseEnter: function () {
+
+                /*
+                    Här har vi en intressant slump funktion!
+                    Tog mig friheten att slumpa fram en färg varje gång musen är ovanpå Div elementet.
+                    Variabeln slumpColor bär på denna funktion / värde. 
+                    Math.floor(Math.random() känner vi redan till då den bär funtkionen att slumpa fram.
+                    Däremot så multipliceras det med 16777215 som är det decimala värdet till den hexadecimala färgen #FFFFFF (vitt). 
+                    Genom att multiplicera med det decimala värdet så sätter jag mönstret för alla genererade färger.
+                    Med toString(16) så konverteras värdena till hexdecimaler och så lägger jag hashtag symbolen till.
+                */ 
+                let slumpColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                
+                // Ändrar backgrundsfärgen till mitt Div-element genom att tillsätta variabeln slumpColor.
+                document.getElementById("minDiv").style.backgroundColor = slumpColor;
+            },
+
+            // Funktion för hovereffekten när musen är utanför Div elementet.
+            vidMouseLeave: function () {
+                // Gör en reset på bakgrundsfärgen så att Div elementet återgår till standard färgen.
+                document.getElementById("minDiv").style.backgroundColor = "";
+            }
+        };
+
+        // Lägger till funktionerna vid mitt Div element genom ordnad Id. 
+        document.getElementById("minDiv").addEventListener("mouseenter", hoverEffect.vidMouseEnter);
+        document.getElementById("minDiv").addEventListener("mouseleave", hoverEffect.vidMouseLeave);
+    </script>
+
+    <footer>
+        <p lang="en">
+            Designed and Developed by William Grandez
+        </p>
+    </footer>
+</body>
+</html>
