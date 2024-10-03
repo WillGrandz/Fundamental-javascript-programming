@@ -124,6 +124,6 @@ InteraktivDiagram.diagramContainer.addEventListener('mouseenter', () => {
 // Lägger till en händelselyssnare för mouseout (när muspekaren lämnar) på footerLink-elementet
 InteraktivDiagram.footerLink.addEventListener('mouseout', () => {
     // Återställer länktexten till "Skapad av Helen Grandez" när muspekaren lämnar länken
-    InteraktivDiagram.footerLink.innerHTML = "Skapad av Helen Grandez";
+    InteraktivDiagram.footerLink.innerHTML = "Skapad av William Grandez";
 });
 
